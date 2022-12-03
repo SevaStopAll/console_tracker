@@ -2,8 +2,8 @@ package ru.job4j.oop;
 
 public class Student {
 
-    public void music() {
-        System.out.println("Tra ta ta");
+    public void music(String lyrics) {
+        System.out.println("I can sing a song: " + lyrics);
     }
 
     public void song() {
@@ -12,11 +12,7 @@ public class Student {
 
     public static void main(String[] args) {
         Student petya = new Student();
-        petya.music();
-        petya.music();
-        petya.music();
-        petya.song();
-        petya.song();
-        petya.song();
+        String song = "I believe I can fly";
+        petya.music(song);
     }
 }
