@@ -21,7 +21,7 @@ public class Tracker {
     public Item[] findAll() {
         Item[] result = Arrays.copyOf(items, size);
         return result;
-        }
+    }
 
     public Item[] findByName(String key) {
         Item[] result = new Item[size];
@@ -34,7 +34,7 @@ public class Tracker {
         }
         result = Arrays.copyOf(result, realSize);
         return result;
-        }
+    }
 
     private int indexOf(int id) {
         int result = -1;
@@ -59,15 +59,16 @@ public class Tracker {
         return result;
     }
 
-        public boolean delete(int id) {
-            boolean result = true;
-            if (indexOf(id)  == -1) {
-                result = false;
-                return result;
-            }
+    public boolean delete(int id) {
+        boolean result = true;
+        if (indexOf(id) == -1) {
+            result = false;
+            return result;
+        } else {
             System.arraycopy(items, id + 1, items, id, size - id);
             items[size - 1] = null;
             size--;
-            return result;
         }
+        return result;
     }
+}
