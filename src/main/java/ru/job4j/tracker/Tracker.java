@@ -51,7 +51,6 @@ public class Tracker {
         boolean result = true;
         if (indexOf(id) == -1) {
             result = false;
-            return result;
         } else {
             item.setId(id);
             items[indexOf(id)] = item;
@@ -63,7 +62,6 @@ public class Tracker {
         boolean result = true;
         if (indexOf(id) == -1) {
             result = false;
-            return result;
         } else {
             System.arraycopy(items, id + 1, items, id, size - id);
             items[size - 1] = null;
