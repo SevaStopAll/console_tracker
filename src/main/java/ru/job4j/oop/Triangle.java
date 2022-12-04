@@ -11,23 +11,22 @@ public class Triangle {
         this.third = cp;
     }
 
-    public double semiPerimeter() {
-        return (first.distance(second) + second.distance(third) + third.distance(first)) / 2;
+    public double semiPerimeter(double a, double b, double c) {
+        return (a + b + c) / 2;
     }
 
-    public boolean exist() {
-        return (first.distance(second) + second.distance(third) > third.distance(first)
-                && second.distance(third) + third.distance(first) > first.distance(second)
-                && third.distance(first) + first.distance(second) > second.distance(third));
+    public boolean exist(double ab, double ac, double bc) {
+        return ab + ac > bc  && ac + bc > ab && bc + ab > ac;
     }
 
     public double area() {
         double ab = first.distance(second);
-        double ac = second.distance(third);
-        double bc = third.distance(first);
-        if (this.exist()) {
-            double p = semiPerimeter();
-            return Math.sqrt((p * (p - ab) * (p - ac) * (p - bc)));
+        double ac = first.distance(third);
+        double bc = second.distance(third);
+        if (this.exist(ab, ac, bc)) {
+            double p = semiPerimeter(ab, ac, bc);
+                return Math.sqrt((p * (p - ab) * (p - ac) * (p - bc)));
+
         }
         return -1;
     }
