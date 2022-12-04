@@ -33,4 +33,13 @@ class PointTest {
         double result = a.distance(b);
         assertThat(result).isEqualTo(expected, offset(0.01));
     }
+
+    @Test
+    void whenA222B344Then3() {
+        double expected = 3;
+        Point a = new Point(2, 2, 2);
+        Point b = new Point(3, 4, 4);
+        double result = a.distance3d(b);
+        assertThat(result).isEqualTo(expected, offset(0.01));
+    }
 }
