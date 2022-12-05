@@ -1,9 +1,9 @@
 package ru.job4j.pojo;
 
 public class Student {
-    String name;
-    String groupNumber;
-    String dateInscription;
+    private String name;
+    private String groupNumber;
+    private String dateInscription;
 
     public String getName() {
         return name;
