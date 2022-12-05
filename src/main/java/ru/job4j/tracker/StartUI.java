@@ -60,7 +60,7 @@ public class StartUI {
                 }
             } else if (select == 5) {
                 System.out.println("=== Find by name ===");
-                System.out.print("Enter name");
+                System.out.println("Enter name");
                 String name = scanner.nextLine();
                 Item[] items = tracker.findByName(name);
                 if (items.length > 0) {
