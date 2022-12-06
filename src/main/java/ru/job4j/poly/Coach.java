@@ -1,4 +1,4 @@
-package ru.job4j.inheritance.poly;
+package ru.job4j.poly;
 
 public class Coach implements Vehicle {
     @Override
