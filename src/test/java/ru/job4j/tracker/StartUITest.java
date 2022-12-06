@@ -15,17 +15,5 @@ public class StartUITest {
         assertThat(created.getName()).isEqualTo(expected.getName());
     }
 
-    @Test
-    public void whenEditItem() {
-        Tracker tracker = new Tracker();
-        Item item = new Item("new item");
-        tracker.add(item);
-        String[] answers = {
-                String.valueOf(item.getId()),
-                "edited item"
-        };
-        StartUI.editItem(new StubInput(answers), tracker);
-        Item edited = tracker.findById(item.getId());
-        assertThat(edited.getName()).isEqualTo("edited item");
-    }
+
 }
