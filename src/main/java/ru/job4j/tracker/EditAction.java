@@ -9,7 +9,7 @@ public class EditAction implements UserAction {
 
     @Override
     public String name() {
-        return "Edit";
+        return "Edit item";
     }
 
     @Override
