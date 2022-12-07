@@ -1,6 +1,6 @@
 package ru.job4j.tracker;
 
-public class SwitchOffAction implements UserAction {
+public class ExitAction implements UserAction {
 
     @Override
     public String name() {

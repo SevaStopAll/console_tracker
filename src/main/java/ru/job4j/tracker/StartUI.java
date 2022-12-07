@@ -27,7 +27,7 @@ public class StartUI {
                 new DeleteAction(),
                 new FindByIdAction(),
                 new FindByNameAction(),
-                new SwitchOffAction(),
+                new ExitAction(),
         };
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
