@@ -166,7 +166,7 @@ public class StartUITest {
         String ln = System.lineSeparator();
         assertThat(out.toString()).isEqualTo(
                 "Menu:" + ln
-                        + "0. Find by id" + ln
+                        + "0. Find by i" + ln
                         + "1. Exit Program" + ln
                         + "=== Find by id ===" + ln
                         + one + ln
