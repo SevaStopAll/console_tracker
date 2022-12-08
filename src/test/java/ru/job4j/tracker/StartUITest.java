@@ -8,7 +8,7 @@ public class StartUITest {
     public void whenCreateItem() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0", "Item name", "1"}
+                new String[]{"0", "Item name", "1"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
@@ -27,7 +27,7 @@ public class StartUITest {
         String id = String.valueOf(item.getId());
         String replacedName = "New item name";
         Input in = new StubInput(
-                new String[] {"0", id, replacedName, "1"}
+                new String[]{"0", id, replacedName, "1"}
         );
         UserAction[] actions = {
                 new EditAction(out),
@@ -44,7 +44,7 @@ public class StartUITest {
         Item item = tracker.add(new Item("Deleted item"));
         String id = String.valueOf(item.getId());
         Input in = new StubInput(
-                new String[] {"0", id, "1"}
+                new String[]{"0", id, "1"}
         );
         UserAction[] actions = {
                 new DeleteAction(out),
@@ -58,7 +58,7 @@ public class StartUITest {
     public void whenExit() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0"}
+                new String[]{"0"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
@@ -78,7 +78,7 @@ public class StartUITest {
         Item one = tracker.add(new Item("test1"));
         String replaceName = "New Test Name";
         Input in = new StubInput(
-                new String[] {"0", String.valueOf(one.getId()), replaceName, "1"}
+                new String[]{"0", String.valueOf(one.getId()), replaceName, "1"}
         );
         UserAction[] actions = new UserAction[]{
                 new EditAction(out),
@@ -104,7 +104,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
         Input in = new StubInput(
-                new String[] {"0", "1"}
+                new String[]{"0", "1"}
         );
         UserAction[] actions = new UserAction[]{
                 new ShowAllAction(out),
@@ -130,7 +130,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
         Input in = new StubInput(
-                new String[] {"0", one.getName(), "1"}
+                new String[]{"0", one.getName(), "1"}
         );
         UserAction[] actions = new UserAction[]{
                 new FindByNameAction(out),
@@ -156,7 +156,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
         Input in = new StubInput(
-                new String[] {"0", String.valueOf(one.getId()),  "1"}
+                new String[]{"0", String.valueOf(one.getId()), "1"}
         );
         UserAction[] actions = new UserAction[]{
                 new FindByIdAction(out),
@@ -180,7 +180,7 @@ public class StartUITest {
     public void whenInvalidExit() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"7", "0"}
+                new String[]{"7", "0"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = new UserAction[]{
