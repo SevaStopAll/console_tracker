@@ -10,8 +10,6 @@ public class ValidateInput extends ConsoleInput {
             try {
                 value = super.askInt(question);
                 invalid = false;
-            } catch (NumberFormatException nfe) {
-                System.out.println("Please enter validate data again");
             }
         } while (invalid);
         return value;
