@@ -1,7 +1,5 @@
 package ru.job4j.early;
 
-import java.util.Locale;
-
 public class PasswordValidator {
 
     public static String validate(String password) {
@@ -15,24 +13,36 @@ public class PasswordValidator {
                 || password.toLowerCase().contains("user") || password.toLowerCase().contains("admin")) {
             throw new IllegalArgumentException("Password shouldn't contain substrings: qwerty, 12345, password, admin, user");
         }
+        int upper = 0;
+        int lower = 0;
+        int digits = 0;
+        int special = 0;
+        for (int i = 0; i < password.length(); i++) {
+            if (Character.isDigit(password.charAt(i))) {
+                digits++;
+            }
+            if (Character.isLowerCase(password.charAt(i))) {
+                lower++;
+            }
+            if (Character.isUpperCase(password.charAt(i))) {
+                upper++;
+            }
+            if (!Character.isLetterOrDigit(password.charAt(i))) {
+                special++;
+            }
+        }
+        if (upper == 0) {
+            throw new IllegalArgumentException("Password should contain at least one uppercase letter");
+        }
+        if (lower == 0) {
+            throw new IllegalArgumentException("Password should contain at least one lowercase letter");
+        }
+       if (digits == 0) {
+           throw new IllegalArgumentException("Password should contain at least one figure");
+       }
+        if (special == 0) {
+            throw new IllegalArgumentException("Password should contain at least one special symbol");
+        }
         return password;
     }
 }
-        /*for (int index = 0; index < password.length(); index++)  {
-                if (Character.isLowerCase(password.charAt(index))) {
-                    break;
-                }
-                throw new IllegalArgumentException("Password should contain at least one lowercase letter");
-        }
-        for (int index = 0; index < password.length(); index++)  {
-            if (Character.isDigit(password.charAt(index))) {
-                break;
-            }
-            throw new IllegalArgumentException("Password should contain at least one figure");
-        }
-        for (int index = 0; index < password.length(); index++)  {
-            if (Character.isDigit(password.charAt(index))) {
-                break;
-            }
-            throw new IllegalArgumentException("Password should contain at least one figure");
-        }*/
