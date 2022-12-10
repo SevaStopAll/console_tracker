@@ -47,9 +47,8 @@ public class Tracker {
         int index = indexOf(id);
         boolean result = index != -1;
         if (result) {
-            items.remove(items.get(index));
-            items.add(item);
-            items.get(items.size() - 1).setId(id);
+            item.setId(id);
+            items.set(index, item);
         }
         return result;
     }
