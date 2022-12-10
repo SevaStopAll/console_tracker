@@ -1,7 +1,6 @@
 package ru.job4j.strategy;
 
 public class Paint {
-
     public void draw(Shape shape) {
         System.out.println(shape.draw());
     }
@@ -10,5 +9,6 @@ public class Paint {
         Paint paint = new Paint();
         paint.draw(new Triangle());
         paint.draw(new Square());
+        paint.draw(new Rectangle());
     }
 }
