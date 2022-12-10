@@ -3,11 +3,8 @@ package ru.job4j.decorator;
 public class SuperHeroes {
 
     public static void main(String[] params) {
-
         SuperHero firstHero = new SuperAgility(new SuperIntelligence(new GreenSuperHero()));
-
         SuperHero secondHero = new SuperPower(new SuperAgility(new RedSuperHero()));
-
         printInfo(firstHero);
         printInfo(secondHero);
 

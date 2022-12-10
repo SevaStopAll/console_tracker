@@ -1,7 +1,7 @@
 package ru.job4j.decorator;
 
 public interface SuperHero {
-    String getDescription(); // описание
+    String getDescription();
 
-    int getChanceOfSurvival(); // шанс на выживание
+    int getChanceOfSurvival();
 }
