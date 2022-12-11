@@ -19,6 +19,17 @@ public class PhoneDictionaryTest {
     }
 
     @Test
+    public void whenListIsEmpty() {
+        PhoneDictionary phones = new PhoneDictionary();
+        phones.add(
+                new Person("Petr", "Arsentev", "534872", "Bryansk")
+        );
+        ArrayList<Person> persons = phones.find("Alex");
+        boolean result = persons.isEmpty();
+        assertThat(result).isTrue();
+    }
+
+    @Test
     public void whenOutOfBoundsException() {
         IndexOutOfBoundsException exception = assertThrows(
                 IndexOutOfBoundsException.class,
