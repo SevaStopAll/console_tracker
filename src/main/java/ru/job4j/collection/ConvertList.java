@@ -6,9 +6,9 @@ import java.util.List;
 public class ConvertList {
     public static List<Integer> convert(List<int[]> list) {
         List<Integer> rsl = new ArrayList<>();
-        for (int[] mass : list) {
-            for (int i : mass) {
-                rsl.add(i);
+        for (int[] row : list) {
+            for (int cell : row) {
+                rsl.add(cell);
             }
         }
         return rsl;
