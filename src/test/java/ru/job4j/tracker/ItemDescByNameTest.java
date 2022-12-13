@@ -7,8 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
-/*
 class ItemDescByNameTest {
     @Test
     void when3ItemsSorted() {
@@ -35,4 +33,4 @@ class ItemDescByNameTest {
         result.sort(new ItemAscByName());
         assertThat(result).isEqualTo(expected);
     }
-}*/
+}
