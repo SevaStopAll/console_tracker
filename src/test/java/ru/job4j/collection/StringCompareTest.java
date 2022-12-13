@@ -53,4 +53,45 @@ public class StringCompareTest {
         );
         assertThat(rst).isLessThan(0);
     }
+
+    @Test
+    public void firstCharOfLeftGreaterThanRightShouldBePositive() {
+        StringCompare compare = new StringCompare();
+        int rst = compare.compare(
+                "Olexeev",
+                "Alexeev"
+        );
+        assertThat(rst).isGreaterThan(0);
+    }
+
+    @Test
+    public void firstCharOfLeftLessThanRightShouldBeNegative() {
+        StringCompare compare = new StringCompare();
+        int rst = compare.compare(
+                "Alexeev",
+                "Olexeev"
+        );
+        assertThat(rst).isLessThan(0);
+    }
+
+    @Test
+    public void lastCharOfLeftGreaterThanRightShouldBePositive() {
+        StringCompare compare = new StringCompare();
+        int rst = compare.compare(
+                "Milanu",
+                "Milana"
+        );
+        assertThat(rst).isGreaterThan(0);
+    }
+
+    @Test
+    public void lastCharOfLeftLessThanRightShouldBeNegative() {
+        StringCompare compare = new StringCompare();
+        int rst = compare.compare(
+                "Milana",
+                "Milanu"
+        );
+        assertThat(rst).isLessThan(0);
+    }
+
 }
