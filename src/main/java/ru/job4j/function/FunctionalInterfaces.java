@@ -23,14 +23,14 @@ public class FunctionalInterfaces {
             if (biPred.test(i, map.get(i))) {
                 System.out.println("key: " + i + " value: " + map.get(i));
             }
-            Supplier<List<String>> sup = () -> new ArrayList<>(map.values());
-            List<String> strings = sup.get();
+        }
+        Supplier<List<String>> sup = () -> new ArrayList<>(map.values());
+        List<String> strings = sup.get();
 
-            Consumer<String> con = (string) -> System.out.println(string);
-            Function<String, String> func = s -> s.toUpperCase();
-            for (String s : strings) {
-                con.accept(func.apply(s));
-            }
+        Consumer<String> con = (string) -> System.out.println(string);
+        Function<String, String> func = s -> s.toUpperCase();
+        for (String s : strings) {
+            con.accept(func.apply(s));
         }
     }
 }
