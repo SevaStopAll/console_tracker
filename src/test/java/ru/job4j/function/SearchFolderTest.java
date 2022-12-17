@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/*
 public class SearchFolderTest {
     @Test
     public void whenFilterSize() {
@@ -36,4 +37,4 @@ public class SearchFolderTest {
         List<Folder> rsl = SearchFolder.filter(list, pred);
         assertThat(rsl).containsAll(expected);
     }
-}
+}*/
