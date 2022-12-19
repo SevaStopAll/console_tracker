@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 /**
  * Класс позволяет проводить банковские переводы между счетами, рабоатать с базой клиентов и счетов,
@@ -57,13 +58,12 @@ public class BankService {
      * ничего не найдено.
      */
     public User findByPassport(String passport) {
-        for (User user : users.keySet()) {
-            if (passport.equals(user.getPassport())) {
-                return user;
+        return users.keySet()
+                .stream()
+                .filter(user -> user.getPassport().equals(passport))
+                .findFirst()
+                .orElse(null);
             }
-        }
-        return null;
-    }
 
     /**
      * Метод принимает на вход номер паспорта клиента и реквизиты счета, по которым
@@ -74,14 +74,15 @@ public class BankService {
      * клиент или счет не найдены.
      */
     public Account findByRequisite(String passport, String requisite) {
-        User user =  findByPassport(passport);
+        User user = findByPassport(passport);
         if (user != null) {
-            for (Account account : getAccounts(user)) {
-                if (requisite.equals(account.getRequisite())) {
-                    return account;
-                }
-            }
+            return users.get(user)
+                    .stream()
+                    .filter(account -> account.getRequisite().equals(requisite))
+                    .findFirst()
+                    .orElse(null);
         }
+
         return null;
     }
 
