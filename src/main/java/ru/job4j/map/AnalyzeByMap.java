@@ -8,8 +8,8 @@ public class AnalyzeByMap {
         int counter = 0;
         double score = 0;
         for (Pupil pupil : pupils) {
-            for (Subject subject : pupil.subjects()) {
-                score += subject.score();
+            for (Subject1 subject1 : pupil.subject1s()) {
+                score += subject1.score();
                 counter++;
             }
         }
@@ -22,8 +22,8 @@ public class AnalyzeByMap {
         for (Pupil pupil : pupils) {
             int counter = 0;
             double score = 0;
-            for (Subject subject : pupil.subjects()) {
-                score += subject.score();
+            for (Subject1 subject1 : pupil.subject1s()) {
+                score += subject1.score();
                 counter++;
             }
             score /= counter;
@@ -36,11 +36,11 @@ public class AnalyzeByMap {
         Map<String, Integer> temp = new LinkedHashMap<>();
         int counter = 0;
         for (Pupil pupil : pupils) {
-            for (Subject subject : pupil.subjects()) {
-                if (temp.containsKey(subject.name())) {
-                    temp.put((subject.name()), temp.get(subject.name()) + subject.score());
+            for (Subject1 subject1 : pupil.subject1s()) {
+                if (temp.containsKey(subject1.name())) {
+                    temp.put((subject1.name()), temp.get(subject1.name()) + subject1.score());
                 } else {
-                temp.put(subject.name(), subject.score());
+                temp.put(subject1.name(), subject1.score());
                 counter++;
                 }
             }
@@ -56,8 +56,8 @@ public class AnalyzeByMap {
         List<Label> students = new ArrayList<>();
         for (Pupil pupil : pupils) {
             double score = 0;
-            for (Subject subject : pupil.subjects()) {
-                score += subject.score();
+            for (Subject1 subject1 : pupil.subject1s()) {
+                score += subject1.score();
                 students.add(new Label(pupil.name(), score));
             }
         }
@@ -68,9 +68,9 @@ public class AnalyzeByMap {
     public static Label bestSubject(List<Pupil> pupils) {
         Map<String, Integer> temp = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
-            for (Subject subject : pupil.subjects()) {
-                int score = temp.getOrDefault(subject.name(), 0);
-                temp.put(subject.name(), score + subject.score());
+            for (Subject1 subject1 : pupil.subject1s()) {
+                int score = temp.getOrDefault(subject1.name(), 0);
+                temp.put(subject1.name(), score + subject1.score());
             }
         }
         List<Label> subjectScore = new ArrayList<>();
