@@ -3,7 +3,6 @@ package ru.job4j.stream;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -25,9 +24,12 @@ public class Analyze {
     }
 
     public static List<Tuple> averageScoreBySubject(Stream<Pupil> stream) {
-        return stream.flatMap(pupil -> pupil.subjects()
-                .stream()).collect(Collectors.groupingBy(Subject::name, LinkedHashMap::new, Collectors.averagingDouble(Subject::score)))
-                .entrySet().stream()
+        return stream.flatMap(pupil -> pupil.subjects().stream())
+                .collect(Collectors.groupingBy(
+                        Subject::name,
+                        LinkedHashMap::new,
+                        Collectors.averagingDouble(Subject::score)
+                )).entrySet().stream()
                 .map(entry -> new Tuple(entry.getKey(), entry.getValue()))
                 .collect(Collectors.toList());
     }
@@ -38,14 +40,16 @@ public class Analyze {
                         .mapToInt(Subject::score)
                         .sum()))
                 .max(Comparator.comparing(Tuple::score))
-                .orElse(new Tuple("o", 0));
+                .orElse(null);
     }
 
     public static Tuple bestSubject(Stream<Pupil> stream) {
-        return stream.flatMap(pupil -> pupil.subjects()
-                        .stream()).collect(Collectors.groupingBy(Subject::name, LinkedHashMap::new, Collectors.summingDouble(Subject::score)))
-                        .entrySet().stream()
-                        .map(entry -> new Tuple(entry.getKey(), entry.getValue()))
-                .max(Comparator.comparing(Tuple::score)).orElse(new Tuple("o", 0));
+        return stream.flatMap(pupil -> pupil.subjects().stream())
+                .collect(Collectors.groupingBy(
+                        Subject::name,
+                        Collectors.summingDouble(Subject::score)
+                )).entrySet().stream()
+                .map(entry -> new Tuple(entry.getKey(), entry.getValue()))
+                .max(Comparator.comparing(Tuple::score)).orElse(null);
     }
 }
