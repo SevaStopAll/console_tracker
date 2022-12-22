@@ -23,6 +23,6 @@ public class AppleStore {
         for (int i = 0; i < count; i++) {
             queue.poll();
         }
-        return queue.poll().name();
+        return queue.peek().name();
     }
 }
