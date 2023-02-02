@@ -10,7 +10,7 @@ public class StartUI {
         this.out = out;
     }
 
-    public void init(Input input, MemTracker memTracker, List<UserAction> actions) {
+    public void init(Input input, Store store, List<UserAction> actions) {
         boolean run = true;
         while (run) {
             showMenu(actions);
@@ -20,7 +20,7 @@ public class StartUI {
                 continue;
             }
             UserAction action = actions.get(select);
-            run = action.execute(input, memTracker);
+            run = action.execute(input, store);
         }
     }
 
@@ -44,8 +44,8 @@ public class StartUI {
                 new Exit()
         };
         List<UserAction> actions = Arrays.asList(userActions);
-        MemTracker memTracker = new MemTracker();
-        new StartUI(output).init(input, memTracker, actions);
+        Store tracker = new MemTracker();
+        new StartUI(output).init(input, tracker, actions);
     }
 }
 
