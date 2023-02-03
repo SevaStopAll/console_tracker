@@ -49,9 +49,8 @@ public class SqlTracker implements Store {
         try (PreparedStatement ps = cn.prepareStatement("insert into users(name, data) values (?, ?)")) {
             ps.setString(1, item.getName());
             long millis = System.currentTimeMillis();
-/*            Timestamp timestamp = new Timestamp(millis);
-            LocalDateTime localDateTime = timestamp.toLocalDateTime();
-            ps.setDate(1, ps.getTime);*/
+            Timestamp timestamp = new Timestamp(millis);
+            ps.setTimestamp(2, timestamp);
             ps.execute();
         }  catch (SQLException ex) {
                 throw new RuntimeException(ex);
@@ -71,36 +70,36 @@ public class SqlTracker implements Store {
 
     @Override
     public List<Item> findAll() {
+
         return null;
     }
 
     @Override
     public List<Item> findByName(String key) {
-        return null;
+        try (PreparedStatement ps = cn.prepareStatement("insert into users(name, data) values (?, ?)")) {
+            ps.setString(1, item.getName());
+            long millis = System.currentTimeMillis();
+            Timestamp timestamp = new Timestamp(millis);
+            ps.setTimestamp(2, timestamp);
+            ps.execute();
+        }  catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        return new Item();
     }
 
     @Override
     public Item findById(int id) {
-
-        return null;
+        try (PreparedStatement ps = cn.prepareStatement("insert into users(name, data) values (?, ?)")) {
+            ps.setString(1, item.getName());
+            long millis = System.currentTimeMillis();
+            Timestamp timestamp = new Timestamp(millis);
+            ps.setTimestamp(2, timestamp);
+            ps.execute();
+        }  catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        return new Item();
     }
 }
 
-
-/*
-4. Реализуйте остальные методы класса SqlTracker.
-
-        Метод добавления должен устанавливать Item id, сгенерированное БД.
-
-        Для вставки и получения даты используйте методы JDBC setTimestamp(), getTimestamp(). Ниже приведен пример преобразования Timestamp и LocalDateTime
-
-        */
-/* Из Timestamp в LocalDateTime *//*
-
-        long millis = System.currentTimeMillis();
-        Timestamp timestamp = new Timestamp(millis);
-        LocalDateTime localDateTime = timestamp.toLocalDateTime();
-        */
-/* Из LocalDateTime в Timestamp *//*
-
-        Timestamp timestampFromLDT = Timestamp.valueOf(localDateTime);*/
