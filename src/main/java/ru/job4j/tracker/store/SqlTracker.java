@@ -4,9 +4,8 @@ import ru.job4j.tracker.Item;
 import ru.job4j.tracker.Store;
 
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Properties;
 
@@ -47,7 +46,17 @@ public class SqlTracker implements Store {
 
     @Override
     public Item add(Item item) {
-        return null;
+        try (PreparedStatement ps = cn.prepareStatement("insert into users(name, data) values (?, ?)")) {
+            ps.setString(1, item.getName());
+            long millis = System.currentTimeMillis();
+/*            Timestamp timestamp = new Timestamp(millis);
+            LocalDateTime localDateTime = timestamp.toLocalDateTime();
+            ps.setDate(1, ps.getTime);*/
+            ps.execute();
+        }  catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        return item;
     }
 
     @Override
@@ -72,6 +81,7 @@ public class SqlTracker implements Store {
 
     @Override
     public Item findById(int id) {
+
         return null;
     }
 }
