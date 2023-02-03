@@ -6,6 +6,7 @@ import ru.job4j.tracker.Store;
 import java.io.InputStream;
 import java.sql.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -46,7 +47,7 @@ public class SqlTracker implements Store {
 
     @Override
     public Item add(Item item) {
-        try (PreparedStatement ps = cn.prepareStatement("insert into users(name, data) values (?, ?)")) {
+        try (PreparedStatement ps = cn.prepareStatement("insert into items(name, created) values (?, ?)")) {
             ps.setString(1, item.getName());
             long millis = System.currentTimeMillis();
             Timestamp timestamp = new Timestamp(millis);
@@ -69,14 +70,24 @@ public class SqlTracker implements Store {
     }
 
     @Override
-    public List<Item> findAll() {
-
+    public List<Item> findAll(){
+        List<Item> items = new ArrayList<>();
+        try (Statement statement = cn.createStatement()) {
+            ResultSet result = statement.executeQuery("select * from items;");
+            while (result.next()) {
+                items.add(new Item(result.getString("name"),
+                        result.getInt("id")));
+                result.getTimestamp("created");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return null;
     }
 
     @Override
     public List<Item> findByName(String key) {
-        try (PreparedStatement ps = cn.prepareStatement("insert into users(name, data) values (?, ?)")) {
+/*        try (PreparedStatement ps = cn.prepareStatement("insert into users(name, data) values (?, ?)")) {
             ps.setString(1, item.getName());
             long millis = System.currentTimeMillis();
             Timestamp timestamp = new Timestamp(millis);
@@ -84,13 +95,13 @@ public class SqlTracker implements Store {
             ps.execute();
         }  catch (SQLException ex) {
             throw new RuntimeException(ex);
-        }
-        return new Item();
+        }*/
+        return null;
     }
 
     @Override
     public Item findById(int id) {
-        try (PreparedStatement ps = cn.prepareStatement("insert into users(name, data) values (?, ?)")) {
+ /*       try (PreparedStatement ps = cn.prepareStatement("insert into users(name, data) values (?, ?)")) {
             ps.setString(1, item.getName());
             long millis = System.currentTimeMillis();
             Timestamp timestamp = new Timestamp(millis);
@@ -98,8 +109,8 @@ public class SqlTracker implements Store {
             ps.execute();
         }  catch (SQLException ex) {
             throw new RuntimeException(ex);
-        }
-        return new Item();
+        }*/
+        return null;
     }
 }
 
