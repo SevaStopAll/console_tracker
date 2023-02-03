@@ -76,13 +76,13 @@ public class SqlTracker implements Store {
             ResultSet result = statement.executeQuery("select * from items;");
             while (result.next()) {
                 items.add(new Item(result.getString("name"),
-                        result.getInt("id")));
-                result.getTimestamp("created");
+                        result.getInt("id"),
+                        result.getTimestamp("created").toLocalDateTime()));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return items;
     }
 
     @Override

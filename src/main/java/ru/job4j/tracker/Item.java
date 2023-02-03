@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import ru.job4j.nested.Local;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -22,6 +24,12 @@ public class Item {
     public Item(String name, int id) {
         this.name = name;
         this.id = id;
+    }
+
+    public Item(String name, int id, LocalDateTime ldt) {
+        this.name = name;
+        this.id = id;
+        this.created = ldt;
     }
 
     @Override
