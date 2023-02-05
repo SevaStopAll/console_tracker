@@ -51,6 +51,7 @@ public class SqlTracker implements Store {
                     resultSet.getTimestamp("created").toLocalDateTime());
         return item;
     }
+
     @Override
     public Item add(Item item) {
         try (PreparedStatement ps =
