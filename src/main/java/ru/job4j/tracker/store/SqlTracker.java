@@ -45,9 +45,8 @@ public class SqlTracker implements Store {
     }
 
     private Item createItem(ResultSet resultSet) throws SQLException {
-        Item item = null;
-             item = new Item(resultSet.getString("name"),
-                    resultSet.getInt("id"),
+        Item item = new Item(resultSet.getInt("id"),
+                     resultSet.getString("name"),
                     resultSet.getTimestamp("created").toLocalDateTime());
         return item;
     }
@@ -95,7 +94,6 @@ public class SqlTracker implements Store {
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
-
         return result;
     }
 
@@ -134,6 +132,7 @@ public class SqlTracker implements Store {
         try (PreparedStatement statement = cn.prepareStatement("select * from items where id = ?")) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
             result = createItem(resultSet);
         } catch (SQLException e) {
             throw new RuntimeException(e);
