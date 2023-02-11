@@ -46,8 +46,8 @@ public class SqlTracker implements Store {
 
     private Item createItem(ResultSet resultSet) throws SQLException {
         Item item = new Item(resultSet.getInt("id"),
-                     resultSet.getString("name"),
-                    resultSet.getTimestamp("created").toLocalDateTime());
+                resultSet.getString("name"),
+                resultSet.getTimestamp("created").toLocalDateTime());
         return item;
     }
 
@@ -55,7 +55,7 @@ public class SqlTracker implements Store {
     public Item add(Item item) {
         try (PreparedStatement ps =
                      cn.prepareStatement("insert into items(name, created) values (?, ?)",
-                Statement.RETURN_GENERATED_KEYS)) {
+                             Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, item.getName());
             ps.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
             ps.execute();
@@ -73,27 +73,27 @@ public class SqlTracker implements Store {
     @Override
     public boolean replace(int id, Item item) {
         boolean result = false;
-            try (PreparedStatement ps =
-                         cn.prepareStatement("update items set name = ?, created = ? where id = ?")) {
-                ps.setString(1, item.getName());
-                ps.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
-                ps.setInt(3, id);
-                result = ps.executeUpdate() > 0;
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
-            }
+        try (PreparedStatement ps =
+                     cn.prepareStatement("update items set name = ?, created = ? where id = ?")) {
+            ps.setString(1, item.getName());
+            ps.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
+            ps.setInt(3, id);
+            result = ps.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
         return result;
     }
 
     @Override
     public boolean delete(int id) {
         boolean result = false;
-            try (PreparedStatement ps = cn.prepareStatement("delete from items where id = ?")) {
-                ps.setInt(1, id);
-                 result = ps.executeUpdate() > 0;
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
-            }
+        try (PreparedStatement ps = cn.prepareStatement("delete from items where id = ?")) {
+            ps.setInt(1, id);
+            result = ps.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
         return result;
     }
 
@@ -141,4 +141,3 @@ public class SqlTracker implements Store {
         return result;
     }
 }
-

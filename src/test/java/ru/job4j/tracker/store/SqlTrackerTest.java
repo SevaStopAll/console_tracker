@@ -89,5 +89,4 @@ public class SqlTrackerTest {
         Item item3 = tracker.add(new Item("item3"));
         assertThat(tracker.findAll()).containsAll(List.of(item1, item2, item3));
     }
-
 }
