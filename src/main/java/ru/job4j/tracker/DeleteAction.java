@@ -17,9 +17,9 @@ public class DeleteAction implements UserAction {
         out.println("=== Delete item ===");
         int id = input.askInt("Enter id ");
         if (store.delete(id)) {
-            out.println("Заявка удалена успешно");
+            out.println("Item delete is done");
         } else {
-            out.println("Ошибка удаления заявки");
+            out.println("Item delete error");
         }
         return true;
     }

@@ -24,7 +24,7 @@ public class FindByNameAction implements UserAction {
                 out.println(item);
             }
         } else {
-            out.println("Заявки с именем " + name + " не найдены.");
+            out.println("Item with name " + name + " not found.");
         }
         return true;
     }
