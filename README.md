@@ -15,3 +15,7 @@
 1. Отображать список всех заявок.
 
 1. Производить поиск по имени заявки.
+
+#### Стек: Postgres + Liquibase + H2 + JDBC   
+#### JUnit + AssertJ + Mockito
+#### CheckStyle + JaCoCo + JavaDoc
