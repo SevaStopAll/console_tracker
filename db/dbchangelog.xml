@@ -12,4 +12,5 @@
     <include file="scripts/002_dml_insert_items_data.sql" relativeToChangelogFile="true"/>
     <include file="scripts/003_ddl_create_roles_table.sql" relativeToChangelogFile="true"/>
     <include file="scripts/004_ddl_create_users_table.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/005_ddl_create_notifications_table.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>
