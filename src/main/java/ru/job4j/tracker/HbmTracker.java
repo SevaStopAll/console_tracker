@@ -54,14 +54,13 @@ public class HbmTracker implements Store, AutoCloseable {
 
     @Override
     public boolean delete(int id) {
-        Session session = sf.openSession();
         boolean result = false;
+        Session session = sf.openSession();
         try {
             session.beginTransaction();
-            session.createQuery(
-                            "DELETE Item WHERE id = :fId")
-                    .setParameter("fId", id)
-                    .executeUpdate();
+            Item item = new Item();
+            item.setId(id);
+            session.delete(item);
             session.getTransaction().commit();
             result = true;
         } catch (Exception e) {
@@ -78,7 +77,7 @@ public class HbmTracker implements Store, AutoCloseable {
         List result = new ArrayList<>();
         try {
             session.beginTransaction();
-            Query query = session.createQuery("from ru.job4j.Item", Item.class);
+            Query query = session.createQuery("from ru.job4j.tracker.Item", Item.class);
             result = query.getResultList();
         } catch (Exception e) {
             session.getTransaction().rollback();

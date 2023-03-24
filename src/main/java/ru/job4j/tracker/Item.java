@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import ru.job4j.toone.User;
 
 import javax.persistence.*;
@@ -12,10 +13,12 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "items")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Data
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private int id;
     private String name;
     private LocalDateTime created = LocalDateTime.now();
@@ -46,22 +49,5 @@ public class Item {
         this.id = id;
         this.name = name;
         this.created = ldt;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Item item = (Item) o;
-        return id == item.id && Objects.equals(name, item.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name);
     }
 }
