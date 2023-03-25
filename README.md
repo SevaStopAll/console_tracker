@@ -19,3 +19,5 @@
 #### Стек: Postgres + Liquibase + H2 + JDBC   
 #### JUnit + AssertJ + Mockito
 #### CheckStyle + JaCoCo + JavaDoc
+
+### Next step - create a project only with tracker and util classes for avoid any conflicts. 
