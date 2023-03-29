@@ -55,5 +55,4 @@ public class TrackerHBMTest {
             assertThat(tracker.findAll()).containsAll(List.of(item1, item2, item3));
         }
     }
-
 }
